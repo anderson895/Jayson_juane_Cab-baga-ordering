@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2024 at 07:12 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 01, 2024 at 03:13 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -176,8 +176,7 @@ INSERT INTO `tbl_product` (`id`, `title`, `description`, `price`, `image_name`, 
 (57, 'Hotdog', 'Hotsilog is a meal composed of hotdogs, garlic fried rice, and fried egg. In a Filipino household, this is commonly eaten for breakfast with a condiment of banana ketchup and some pickled shredded papaya (atchara) on the side. Red juicy hotdogs are used to make hotsilog.', 70.00, 'all_images/8829f1ef4069e0e2d013ac4c2c9fecc561.jpg', 12, 'Yes', 'Yes', 100),
 (58, 'Tocino', 'Tosilog is a popular Filipino breakfast meal. The name tosilog was derived from the different components of the meal which are: Tocino (cured pork), Sinangag (Filipino garlic fried rice), and Sunny-side up egg. Tosilog is best eaten with a spicy vinegar dip', 75.00, 'all_images/593018035cff36b02df376b126b24ac858.jpg', 12, 'Yes', 'Yes', 100),
 (59, 'Bacon', 'Bacon steals the spotlight in this traditional Filipino breakfast dish. The classic combination of sinangag and egg serve as the bed for these crispy, meaty  ', 75.00, 'all_images/7bb2219bc5e3ebdaa80d3874315ee05957.jpg', 12, 'Yes', 'Yes', 100),
-(60, 'Bangus', 'Bangsilog is a traditional Filipino meal and a part of silog dishes that are commonly served for breakfast. The dish consists of bangus (milkfish), garlic fried rice, and fried eggs. The milkfish is marinated and pan-fried in oil. Cold cooked rice is fried with garlic in oil, and the eggs are fried sunny side up', 80.00, 'all_images/2e028833b9228a6d3362fbf032957c0c65.jpg', 12, 'Yes', 'Yes', 99),
-(61, 'prod 1', 'desciption', 22.00, 'all_images/2fafcd337d25408e8ce5e0399a9593a5007.png', 13, 'Yes', 'Yes', 2121);
+(60, 'Bangus', 'Bangsilog is a traditional Filipino meal and a part of silog dishes that are commonly served for breakfast. The dish consists of bangus (milkfish), garlic fried rice, and fried eggs. The milkfish is marinated and pan-fried in oil. Cold cooked rice is fried with garlic in oil, and the eggs are fried sunny side up', 80.00, 'all_images/2e028833b9228a6d3362fbf032957c0c65.jpg', 12, 'Yes', 'Yes', 99);
 
 -- --------------------------------------------------------
 
@@ -253,7 +252,8 @@ ALTER TABLE `tbl_order`
 -- Indexes for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `description` (`description`) USING HASH;
 
 --
 -- Indexes for table `users`
@@ -300,7 +300,7 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
